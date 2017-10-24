@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>angular js edit form</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+</head>
+<body>
+
+	
+	<div ng-app="myApp" ng-controller="myctrl">	
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+		<table border="0" ng-repeat="emp in employees">
+			<tr>
+				<th>S.NO</th>
+				<th>NAMES</th>
+				<!-- <th>empl</th>
+				<th>role</th> -->
+				<th>EDIT</th>
+			</tr>
+			<tr>
+				<td>{{$index+1}}</td>
+				<td ng-click="showemp(emp)"><a href="">{{emp.name | uppercase}}</a></td>
+				<!-- <td>{{emp.Empid}}</td>
+				<td>{{emp.role}}</td> -->
+				<td ng-click="editemp(emp)"><a href=""> EDIT </a></td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-3" >
+		<div ng-show="editemploy" class="top">
+			NAME:<input ng-model="editemploy.name">
+			<br><br><br>
+			EMPID:<input ng-model="editemploy.Empid">
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div ng-show="showemploy" class="top">
+			{{showemploy.name}}
+			{{showemploy.role}}
+			{{showemploy.Empid}}
+			
+		</div>
+	</div>
+	</div>
+	<style type="text/css">
+		.top{
+			    margin-top: 58px;
+			    background-color: lightblue;
+			    color: black;
+			    padding: 25PX;
+			    text-transform: uppercase;
+}
+	
+		th,td{
+			padding: 5px;
+		}
+	</style>
+	<script type="text/javascript">
+		var app = angular.module("myApp",[]);
+		app.controller("myctrl",function($scope) {
+			$scope.employees = [
+			{name:"jeevan",Empid:1234,role:"junior"},
+			{name:"rakesh",Empid:5678,role:"trainee"},
+			{name:"praveen",Empid:91011,role:"senior"},
+			{name:"ravi",Empid:121314,role:"middle"},
+
+			];
+
+			$scope.editemp = function(emp){
+				$scope.editemploy=emp;
+			}
+
+			$scope.showemp = function(emp){
+				$scope.showemploy = emp;
+			}
+		});
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>FORM VALIDATION</title>
+</head>
+<script type="text/javascript">
+	function formvalidation() {
+		var x =document.myform.name.value; 
+
+		var y= document.myform.email.value;
+
+		var atposition=y.indexOf("@");
+		var dotposition=y.lastIndexOf(".");
+
+		var z =document.myform.password.value;
+
+		var w =document.myform.password2.value; 
+		/*for alert box*/
+
+		// if (x ==="null" || x ==="") {
+		// 	alert("name cannot be blank");
+		// 	return false;
+		// }else if(atposition<1 || dotposition<atposition+2||dotposition+2>=y.length){
+		// 	alert("Enter the valid email address");
+		// 	return false;
+		// }else if(z.length<6){
+		// 	alert("password must be atleast 6 charecters");
+		// 	return false;
+		// }else if(w!==z){
+		// 	alert("password doesnot matched");
+		// 	return false;
+		// }
+
+		/*for beside of text box*/
+		if (x ==="null" || x ==="") {
+			document.getElementById("name").innerHTML="name cannot be blank";
+			return false;
+		}else if(atposition<1 || dotposition<atposition+2||dotposition+2>=y.length){
+			document.getElementById("email").innerHTML=("Enter the valid email address");
+			return false;
+		}else if(z.length<6){
+			document.getElementById("password").innerHTML=("password must be atleast 6 charecters");
+			return false;
+		}else if(w!==z){
+			document.getElementById("password2").innerHTML=("password doesnot matched");
+			return false;
+		}
+
+
+	}
+	function eclr(){
+
+document.getElementById("name").innerHTML="OK";
+}
+function eclra(){
+
+document.getElementById("email").innerHTML="OK";
+}
+function eclrb(){
+
+document.getElementById("password").innerHTML="OK";
+}
+function eclrc(){
+
+document.getElementById("password2").innerHTML="OK";
+}
+</script>
+
+
+<body>
+<H3>FORM VALIDATION</H3>
+<form name="myform">
+	<table>
+<tr>
+	<td>
+	ENTER YOUR NAME:<input type="TEXT" name="name" onkeypress="eclr()" /><span id="name"></span><br/>
+	</td>
+</tr>
+<tr>
+	<td>
+	ENTER YOUR EMAIL:<input type="EMAIL" name="email" onkeypress="eclra()"><span id = "email"></span><br>
+	</td>
+</tr>
+<tr>
+	<td>
+	ENTER PASSWORD:	<input type="PASSWORD" name="password" onkeypress="eclrb()"><span id="password"></span><br/>
+	</td>
+</tr>
+<tr>
+	<td>
+	RE-ENTER PASSWORD:	<input type="PASSWORD" name="password2" onkeypress="eclrc()"><span id="password2"></span><br/>
+	</td>
+</tr>
+</table>
+<button type="button" onclick="formvalidation()">Submit</button>	
+</form>
+
+</body>
+</html>
